@@ -17,7 +17,6 @@ form.addEventListener("submit", (event) => {
 const getWeatherDataFromApi = async () => {
   //alert("http request is gone!");
   const tokenKey = DecryptStringAES(localStorage.getItem("tokenKey"));
-  //alert(tokenKey);
   const inputValue = input.value;
   const units = "metric";
   const lang = "tr";
@@ -53,10 +52,10 @@ const getWeatherDataFromApi = async () => {
     }">
                                   <span>${name}</span>
                                   <sup>${sys.country}</sup>
-                              </h2>
-                              <div class="city-temp">${Math.round(
-                                main.temp
-                              )}<sup>°C</sup></div>
+                            </h2>
+                            <div class="city-temp">${Math.round(
+                              main.temp
+                            )}<sup>°C</sup></div>
                               <figure>
                                   <img class="city-icon" src="${iconUrl}">
                                   <figcaption>${
@@ -65,19 +64,6 @@ const getWeatherDataFromApi = async () => {
                               </figure>`;
     //*append vs. prepend
     list.prepend(createdLi);
-
-    //*capturing
-    // createdLi.addEventListener("click", (e) => {
-    //   if (e.target.tagName == "IMG") {
-    //     e.target.src = e.target.src == iconUrl ? iconUrlAWS : iconUrl;
-    //   }
-    // });
-
-    //*bubbling
-    // createdLi.addEventListener("click", (e) => {
-    //   alert(`${e.target.tagName} element is clicked`);
-    //   window.location.href = "https://clarusway.com";
-    // });
   } catch (error) {
     console.log(error);
     msg.innerText = `404 (City Not Found)`;
